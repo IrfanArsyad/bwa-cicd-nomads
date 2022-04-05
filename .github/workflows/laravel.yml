@@ -26,3 +26,19 @@ jobs:
       run: chmod -R 777 storage bootstrap/cache
     - name: Execute tests (Unit and Feature tests) via PHPUnit
       run: vendor/bin/phpunit
+
+  deploy:
+    needs: [tests]
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: ssh to laravel nomads ci/cd
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          password: ${{ secrets.PASSWORD }}
+          port: ${{ secrets.PORT }}
+          script: |
+            cd /home/dev/bwa/cicd/bwa-cicd-nomads
+            ls -lah
