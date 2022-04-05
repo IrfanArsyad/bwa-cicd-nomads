@@ -44,5 +44,3 @@ jobs:
             git pull origin main
             composer update -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
             php artisan migrate
-            php artisan optimize:clear
-            php artisan optimize
