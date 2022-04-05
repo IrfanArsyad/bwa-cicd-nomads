@@ -33,7 +33,7 @@ jobs:
 
     steps:
       - name: ssh to laravel nomads ci/cd
-        uses: appleboy/ssh-action@main
+        uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
